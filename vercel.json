@@ -1,0 +1,47 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "api/post-upload-book.js", 
+        "use": "@vercel/node"
+      },
+      {
+        "src": "api/patch-book-id.js", 
+        "use": "@vercel/node"
+      },
+      {
+        "src": "api/delete-book-id.js", 
+        "use": "@vercel/node"
+      },
+      {
+        "src": "api/get-all-books.js", 
+        "use": "@vercel/node"
+      },
+      {
+        "src": "api/get-book-id.js", 
+        "use": "@vercel/node"
+      }
+   ],
+    "routes": [
+      {
+        "src": "/upload-book",
+        "dest": "/api/post-upload-book.js"
+      },
+      {
+        "src": "/book/:id",
+        "dest": "/api/patch-book-id.js"
+      },
+      {
+        "src": "/book/:id",
+        "dest": "/api/delete-book-id.js"
+      },
+      {
+        "src": "/all-books",
+        "dest": "/api/get-all-books.js"
+      },
+      {
+        "src": "/book/:id",
+        "dest": "/api/get-book-id.js"
+      }
+    ]
+  }

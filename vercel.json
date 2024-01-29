@@ -42,6 +42,10 @@
       {
         "src": "/book/:id",
         "dest": "/api/get-book-id.js"
+      },
+        {
+        "src": "/(.*)",
+        "dest": "index.js"
       }
     ]
   }

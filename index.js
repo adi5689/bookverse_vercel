@@ -37,63 +37,63 @@ async function run() {
     const bookCollections = client.db("BookInventory").collection("books");
     
 
-    // //insert a book to the database db: using post method
-    // app.post("/upload-book", async(req, res) => {
-    //     const data = req.body;
-    //     const result = await bookCollections.insertOne(data);
-    //     res.send(result);
-    // })
+    //insert a book to the database db: using post method
+    app.post("/upload-book", async(req, res) => {
+        const data = req.body;
+        const result = await bookCollections.insertOne(data);
+        res.send(result);
+    })
 
 
    
 
 
-    // //update a book data: patch or update method
-    // app.patch("/book/:id", async(req, res) => {
-    //   const id = req.params.id;
-    //   //  console.log(id);
-    //   const updateBookData = req.body;
-    //   const filter = {_id: new ObjectId(id)};
-    //   const options = {upsert: true};
+    //update a book data: patch or update method
+    app.patch("/book/:id", async(req, res) => {
+      const id = req.params.id;
+      //  console.log(id);
+      const updateBookData = req.body;
+      const filter = {_id: new ObjectId(id)};
+      const options = {upsert: true};
 
-    //   const updateDoc = {
-    //     $set: {
-    //       ...updateBookData
-    //     }
-    //   }
-    //   //update
-    //   const result = await bookCollections.updateOne(filter, updateDoc, options);
-    //   res.send(result);
-    // })
-
-
-    // //delete book data
-    // app.delete("/book/:id", async(req, res) => {
-    //   const id = req.params.id;
-    //   const filter = {_id: new ObjectId(id)};
-    //   const result = await bookCollections.deleteOne(filter);
-    //   res.send(result);
-    // })
+      const updateDoc = {
+        $set: {
+          ...updateBookData
+        }
+      }
+      //update
+      const result = await bookCollections.updateOne(filter, updateDoc, options);
+      res.send(result);
+    })
 
 
-    // //find by category
-    // app.get("/all-books", async(req, res) => {
-    //   let query = {};
-    //   if(req.query?.category){
-    //     query = {category: req.query.category}
-    //   }
-    //   const result = await bookCollections.find(query).toArray();
-    //   res.send(result);
-    // })
+    //delete book data
+    app.delete("/book/:id", async(req, res) => {
+      const id = req.params.id;
+      const filter = {_id: new ObjectId(id)};
+      const result = await bookCollections.deleteOne(filter);
+      res.send(result);
+    })
 
 
-    // //to get single book data
-    // app.get("/book/:id", async(req, res) => {
-    //   const id = req.params.id;
-    //   const filter = {_id: new ObjectId(id)};
-    //   const result = await bookCollections.findOne(filter);
-    //   res.send(result);
-    // })
+    //find by category
+    app.get("/all-books", async(req, res) => {
+      let query = {};
+      if(req.query?.category){
+        query = {category: req.query.category}
+      }
+      const result = await bookCollections.find(query).toArray();
+      res.send(result);
+    })
+
+
+    //to get single book data
+    app.get("/book/:id", async(req, res) => {
+      const id = req.params.id;
+      const filter = {_id: new ObjectId(id)};
+      const result = await bookCollections.findOne(filter);
+      res.send(result);
+    })
 
 
      // //get all books from database
